@@ -117,7 +117,7 @@ include __DIR__ . '/includes/header-minimal.php';
                         <label class="form-label-mh" style="font-size:0.8rem;">Phone <span style="color:var(--slate-400);font-weight:400;">(optional)</span></label>
                         <div style="position:relative;">
                             <i class="bi bi-telephone" style="position:absolute;left:0.875rem;top:50%;transform:translateY(-50%);color:var(--slate-400);z-index:1;font-size:0.9rem;"></i>
-                            <input type="tel" name="phone" placeholder="03XX-XXXXXXX" class="form-control-mh" style="padding-left:2.5rem;font-size:0.9rem;height:42px;">
+                            <input type="tel" name="phone" placeholder="03XX-XXXXXXX" maxlength="11" pattern="[0-9]{11}" class="form-control-mh" style="padding-left:2.5rem;font-size:0.9rem;height:42px;">
                         </div>
                     </div>
                 </div>

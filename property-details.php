@@ -238,7 +238,7 @@ require_once __DIR__ . '/includes/header.php';
                     <h4 style="font-size:1rem;font-weight:700;color:var(--slate-900);margin-bottom:0.75rem;">Write a Review</h4>
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <span style="font-size:0.875rem;color:var(--slate-500);margin-right:0.25rem;">Rating:</span>
-                        <?php for ($i = 5; $i >= 1; $i--): ?>
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
                             <input type="radio" name="rating" id="star<?php echo $i; ?>" value="<?php echo $i; ?>" <?php echo $i === 5 ? 'checked' : ''; ?> style="display:none;" required>
                             <label for="star<?php echo $i; ?>" class="review-star-label" style="cursor:pointer;font-size:1.5rem;color:var(--slate-200);transition:color 0.15s;" onmouseover="hoverStars(<?php echo $i; ?>)" onmouseout="resetStars()">
                                 <i class="bi bi-star-fill"></i>

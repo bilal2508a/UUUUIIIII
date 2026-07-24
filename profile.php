@@ -258,7 +258,7 @@ include __DIR__ . '/includes/header.php';
                             </div>
                             <div class="col-md-6">
                                 <label style="font-size:0.85rem;font-weight:600;color:#64748b;margin-bottom:0.25rem;display:block;">Phone Number</label>
-                                <input type="tel" name="phone" value="<?php echo e($user['phone']); ?>" class="form-control" style="border-radius:10px;" placeholder="03XX-XXXXXXX">
+                                <input type="tel" name="phone" value="<?php echo e($user['phone']); ?>" maxlength="11" pattern="[0-9]{11}" class="form-control" style="border-radius:10px;" placeholder="03XXXXXXXXX">
                             </div>
                             <div class="col-md-6">
                                 <label style="font-size:0.85rem;font-weight:600;color:#64748b;margin-bottom:0.25rem;display:block;">Account Type</label>
