@@ -78,7 +78,7 @@ h1,h2,h3,h4,h5,h6{line-height:1.2;letter-spacing:-0.02em;}
 /* ============ Gradients & Glass ============ */
 .gradient-primary-accent{background:linear-gradient(135deg,var(--primary-600),var(--accent-500));}
 .gradient-primary-light{background:linear-gradient(180deg,var(--primary-50) 0%,var(--slate-50) 100%);}
-.gradient-hero{background:linear-gradient(135deg,#0ea5e9,#14b8a6);color:#fff;}
+.gradient-hero{background:linear-gradient(135deg,#0ea5e9,#14b8a6) !important;color:#fff !important;border:none !important;}
 .gradient-text{background:linear-gradient(135deg,var(--primary-600),var(--accent-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .gradient-gold-text{background:linear-gradient(135deg,var(--gold-400),var(--gold-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
