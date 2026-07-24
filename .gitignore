@@ -21,3 +21,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+<<<<<<< HEAD
+=======
+cc-agent/
+>>>>>>> 67835d4409bd60b0e531c7739098ceec1b1898e9
