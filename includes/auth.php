@@ -43,10 +43,11 @@ function requireRole($role) {
     return $user;
 }
 
-// Sign in user with email and password
-function signIn($email, $password) {
-    $stmt = db()->prepare('SELECT * FROM users WHERE email = ?');
-    $stmt->execute([$email]);
+// Sign in user with email/username and password
+function signIn($identifier, $password) {
+    $identifier = trim($identifier);
+    $stmt = db()->prepare('SELECT * FROM users WHERE email = ? OR username = ? LIMIT 1');
+    $stmt->execute([$identifier, $identifier]);
     $user = $stmt->fetch();
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
@@ -56,14 +57,14 @@ function signIn($email, $password) {
 }
 
 // Sign up new user
-function signUp($name, $email, $password, $role = 'tenant', $phone = '') {
-    $stmt = db()->prepare('SELECT id FROM users WHERE email = ?');
-    $stmt->execute([$email]);
+function signUp($name, $email, $password, $role = 'tenant', $phone = '', $username = '') {
+    $stmt = db()->prepare('SELECT id FROM users WHERE email = ? OR (username = ? AND username != "")');
+    $stmt->execute([$email, $username]);
     if ($stmt->fetch()) return false;
 
     $hashed = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = db()->prepare('INSERT INTO users (name, email, password, role, phone) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute([$name, $email, $hashed, $role, $phone]);
+    $stmt = db()->prepare('INSERT INTO users (name, username, email, password, role, phone) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$name, $username ?: null, $email, $hashed, $role, $phone]);
     $_SESSION['user_id'] = db()->lastInsertId();
     return true;
 }

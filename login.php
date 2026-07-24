@@ -12,13 +12,13 @@ if (isLoggedIn()) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
+    $identifier = trim($_POST['identifier'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    if (!$email || !$password) {
+    if (!$identifier || !$password) {
         flash('error', 'Please fill in all fields.');
-    } elseif (!signIn($email, $password)) {
-        flash('error', 'Invalid email or password.');
+    } elseif (!signIn($identifier, $password)) {
+        flash('error', 'Invalid username/email or password.');
     } else {
         $user = currentUser();
         flash('success', 'Welcome back, ' . $user['name'] . '!');
@@ -78,17 +78,20 @@ include __DIR__ . '/includes/header-minimal.php';
 
             <form method="POST" action="<?php echo url('/login.php'); ?>">
                 <div style="margin-bottom:1.25rem;">
-                    <label class="form-label-mh">Email Address</label>
+                    <label class="form-label-mh">Username or Email</label>
                     <div style="position:relative;">
-                        <i class="bi bi-envelope" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--slate-400);z-index:1;"></i>
-                        <input type="email" name="email" placeholder="you@example.com" required class="form-control-mh" style="padding-left:2.75rem;">
+                        <i class="bi bi-person" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--slate-400);z-index:1;"></i>
+                        <input type="text" name="identifier" placeholder="Enter username or email" required class="form-control-mh" style="padding-left:2.75rem;">
                     </div>
                 </div>
                 <div style="margin-bottom:1.25rem;">
                     <label class="form-label-mh">Password</label>
                     <div style="position:relative;">
                         <i class="bi bi-lock" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--slate-400);z-index:1;"></i>
-                        <input type="password" name="password" placeholder="Enter your password" required class="form-control-mh" style="padding-left:2.75rem;">
+                        <input type="password" name="password" id="loginPassword" placeholder="Enter your password" required class="form-control-mh" style="padding-left:2.75rem;padding-right:2.75rem;">
+                        <button type="button" onclick="togglePassword('loginPassword', this)" style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--slate-400);cursor:pointer;padding:0.25rem;z-index:2;">
+                            <i class="bi bi-eye"></i>
+                        </button>
                     </div>
                 </div>
                 <div style="display:flex;justify-content:flex-end;margin-bottom:1.5rem;">
@@ -124,5 +127,21 @@ include __DIR__ . '/includes/header-minimal.php';
         </div>
     </div>
 </div>
+
+<script>
+function togglePassword(inputId, btn) {
+    var input = document.getElementById(inputId);
+    var icon = btn.querySelector('i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+    }
+}
+</script>
 
 <?php include __DIR__ . '/includes/footer-minimal.php'; ?>

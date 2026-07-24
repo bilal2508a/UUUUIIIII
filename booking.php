@@ -111,40 +111,39 @@ require_once __DIR__ . '/includes/header.php';
                 <p style="color:var(--slate-500);font-size:0.95rem;margin:0;">Complete your booking request below</p>
             </div>
 
-            <div class="row g-4">
-                <!-- Left: Property + Form -->
-                <div class="col-lg-7">
-                    <!-- Property Info Card -->
-                    <div class="card-premium mb-4" style="padding:1.25rem;">
-                        <div class="d-flex gap-3">
-                            <?php if ($primaryImg): ?>
-                            <div style="width:120px;height:90px;border-radius:var(--radius-sm);overflow:hidden;flex-shrink:0;">
-                                <img src="<?php echo e(image_url($primaryImg)); ?>" alt="<?php echo e($property['title']); ?>" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <?php else: ?>
-                            <div class="d-flex align-items-center justify-content-center" style="width:120px;height:90px;border-radius:var(--radius-sm);background:var(--slate-100);flex-shrink:0;color:var(--slate-400);font-size:1.5rem;">
-                                <i class="bi bi-image"></i>
-                            </div>
-                            <?php endif; ?>
-                            <div class="flex-grow-1">
-                                <h3 style="font-size:1.1rem;font-weight:700;color:var(--slate-900);margin-bottom:0.25rem;letter-spacing:-0.01em;"><?php echo e($property['title']); ?></h3>
-                                <p style="color:var(--slate-500);font-size:0.85rem;margin-bottom:0.5rem;">
-                                    <i class="bi bi-geo-alt"></i> <?php echo e($property['address'] . ', ' . $property['city']); ?>
-                                </p>
-                                <div class="d-flex gap-3" style="font-size:0.8rem;color:var(--slate-600);">
-                                    <span><i class="bi bi-door-open"></i> <?php echo (int)$property['bedrooms']; ?> Beds</span>
-                                    <span><i class="bi bi-droplet"></i> <?php echo (int)$property['bathrooms']; ?> Baths</span>
-                                    <span><i class="bi bi-building"></i> <?php echo e(get_property_type_label($property['property_type'])); ?></span>
-                                </div>
-                            </div>
-                            <div class="text-end" style="flex-shrink:0;">
-                                <span class="badge badge-price" style="position:static;font-size:0.95rem;"><?php echo $priceLabel; ?></span>
-                            </div>
+            <!-- Property Info Card -->
+            <div class="card-premium mb-4" style="padding:1.25rem;">
+                <div class="d-flex gap-3">
+                    <?php if ($primaryImg): ?>
+                    <div style="width:120px;height:90px;border-radius:var(--radius-sm);overflow:hidden;flex-shrink:0;">
+                        <img src="<?php echo e(image_url($primaryImg)); ?>" alt="<?php echo e($property['title']); ?>" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <?php else: ?>
+                    <div class="d-flex align-items-center justify-content-center" style="width:120px;height:90px;border-radius:var(--radius-sm);background:var(--slate-100);flex-shrink:0;color:var(--slate-400);font-size:1.5rem;">
+                        <i class="bi bi-image"></i>
+                    </div>
+                    <?php endif; ?>
+                    <div class="flex-grow-1">
+                        <h3 style="font-size:1.1rem;font-weight:700;color:var(--slate-900);margin-bottom:0.25rem;letter-spacing:-0.01em;"><?php echo e($property['title']); ?></h3>
+                        <p style="color:var(--slate-500);font-size:0.85rem;margin-bottom:0.5rem;">
+                            <i class="bi bi-geo-alt"></i> <?php echo e($property['address'] . ', ' . $property['city']); ?>
+                        </p>
+                        <div class="d-flex gap-3" style="font-size:0.8rem;color:var(--slate-600);">
+                            <span><i class="bi bi-door-open"></i> <?php echo (int)$property['bedrooms']; ?> Beds</span>
+                            <span><i class="bi bi-droplet"></i> <?php echo (int)$property['bathrooms']; ?> Baths</span>
+                            <span><i class="bi bi-building"></i> <?php echo e(get_property_type_label($property['property_type'])); ?></span>
                         </div>
                     </div>
+                    <div class="text-end" style="flex-shrink:0;">
+                        <span class="badge badge-price" style="position:static;font-size:0.95rem;"><?php echo $priceLabel; ?></span>
+                    </div>
+                </div>
+            </div>
 
-                    <!-- Booking Form -->
-                    <div class="card-premium mb-4" style="padding:1.75rem;">
+            <div class="row g-4">
+                <!-- Left: Booking Form + Summary + Confirm -->
+                <div class="col-lg-8">
+                    <div class="card-premium" style="padding:2rem;">
                         <h3 style="font-size:1.15rem;font-weight:700;color:var(--slate-900);margin-bottom:1.25rem;letter-spacing:-0.01em;">
                             <i class="bi bi-calendar2-plus" style="color:var(--primary-600);"></i> Booking Details
                         </h3>
@@ -230,12 +229,12 @@ require_once __DIR__ . '/includes/header.php';
                     </div>
                 </div>
 
-                <!-- Right: Checklist -->
-                <div class="col-lg-5">
-                    <div class="card-premium" style="padding:1.75rem;position:sticky;top:90px;">
+                <!-- Right: Smart Travel Checklist -->
+                <div class="col-lg-4">
+                    <div class="card-premium" style="padding:1.5rem;position:sticky;top:90px;">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 style="font-size:1.1rem;font-weight:700;color:var(--slate-900);margin:0;letter-spacing:-0.01em;">
-                                <i class="bi bi-list-check" style="color:var(--accent-600);"></i> Smart Travel Checklist
+                            <h3 style="font-size:1rem;font-weight:700;color:var(--slate-900);margin:0;letter-spacing:-0.01em;">
+                                <i class="bi bi-list-check" style="color:var(--accent-600);"></i> Travel Checklist
                             </h3>
                             <span class="badge badge-primary" id="checklistProgress">0/12</span>
                         </div>
