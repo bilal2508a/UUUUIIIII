@@ -73,10 +73,10 @@ include __DIR__ . '/includes/header-minimal.php';
     </div>
 
     <!-- Form Panel -->
-    <div class="auth-panel-form" style="padding:1.5rem 1rem;">
+    <div class="auth-panel-form" style="padding:1.25rem 1rem;">
         <div style="width:100%;max-width:480px;animation:fadeInUp 0.5s ease;">
             <!-- Mobile Logo -->
-            <div style="text-align:center;margin-bottom:1.25rem;" class="d-lg-none">
+            <div style="text-align:center;margin-bottom:1rem;" class="d-lg-none">
                 <div style="display:inline-flex;align-items:center;gap:0.5rem;">
                     <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary-600),var(--accent-500));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.35rem;box-shadow:0 8px 20px -4px rgba(26,82,245,0.4);">
                         <i class="bi bi-buildings"></i>
@@ -85,8 +85,8 @@ include __DIR__ . '/includes/header-minimal.php';
                 </div>
             </div>
 
-            <h1 style="font-size:1.5rem;font-weight:800;color:var(--slate-900);margin:0 0 0.25rem;letter-spacing:-0.02em;">Create Account</h1>
-            <p style="color:var(--slate-500);margin:0 0 1.25rem;font-size:0.9rem;">Join Mehmaan Hub to find or list properties</p>
+            <h1 style="font-size:1.4rem;font-weight:800;color:var(--slate-900);margin:0 0 0.25rem;letter-spacing:-0.02em;">Create Account</h1>
+            <p style="color:var(--slate-500);margin:0 0 1rem;font-size:0.85rem;">Join Mehmaan Hub to find or list properties</p>
 
             <form method="POST" action="<?php echo url('/register.php'); ?>">
                 <div class="row g-2">
@@ -168,12 +168,12 @@ include __DIR__ . '/includes/header-minimal.php';
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block btn-lg" style="padding:0.75rem;margin-top:1.25rem;">
+                <button type="submit" class="btn btn-primary btn-block btn-lg" style="padding:0.7rem;margin-top:1rem;">
                     Create Account
                 </button>
             </form>
 
-            <p style="text-align:center;color:var(--slate-500);margin:1rem 0 0;font-size:0.85rem;">
+            <p style="text-align:center;color:var(--slate-500);margin:0.75rem 0 0;font-size:0.85rem;">
                 Already have an account? <a href="<?php echo url('/login.php'); ?>" style="color:var(--primary-600);font-weight:600;">Login here</a>
             </p>
         </div>

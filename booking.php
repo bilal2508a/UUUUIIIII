@@ -100,8 +100,8 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="container-app py-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
+    <div class="row">
+        <div class="col-lg-12">
             <!-- Header -->
             <div class="text-center mb-4">
                 <div style="width:64px;height:64px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--primary-600),var(--accent-500));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.75rem;margin:0 auto 1.25rem;box-shadow:0 12px 28px -6px rgba(26,82,245,0.35);">
@@ -141,7 +141,36 @@ require_once __DIR__ . '/includes/header.php';
             </div>
 
             <div class="row g-4">
-                <!-- Left: Booking Form + Summary + Confirm -->
+                <!-- Left: Smart Travel Checklist -->
+                <div class="col-lg-4">
+                    <div class="card-premium" style="padding:1.5rem;position:sticky;top:90px;">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 style="font-size:1rem;font-weight:700;color:var(--slate-900);margin:0;letter-spacing:-0.01em;">
+                                <i class="bi bi-list-check" style="color:var(--accent-600);"></i> Travel Checklist
+                            </h3>
+                            <span class="badge badge-primary" id="checklistProgress">0/12</span>
+                        </div>
+
+                        <div class="progress mb-3">
+                            <div id="checklistBar" style="height:100%;width:0%;"></div>
+                        </div>
+
+                        <div class="d-flex flex-column gap-2">
+                            <?php foreach ($checklistItems as $idx => $item): ?>
+                            <label class="checklist-item d-flex align-items-center gap-2 p-2" style="border-radius:var(--radius-sm);border:1px solid var(--slate-200);transition:var(--transition);cursor:pointer;">
+                                <input type="checkbox" class="checklist-checkbox" onchange="updateChecklist()" style="width:18px;height:18px;accent-color:var(--primary-600);flex-shrink:0;">
+                                <i class="bi <?php echo e($item['icon']); ?>" style="color:var(--primary-500);font-size:1.1rem;flex-shrink:0;"></i>
+                                <div style="flex-grow:1;min-width:0;">
+                                    <div style="font-weight:600;color:var(--slate-900);font-size:0.85rem;" class="checklist-title"><?php echo e($item['title']); ?></div>
+                                    <div style="color:var(--slate-400);font-size:0.75rem;" class="checklist-desc"><?php echo e($item['desc']); ?></div>
+                                </div>
+                            </label>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Booking Form + Summary + Confirm -->
                 <div class="col-lg-8">
                     <div class="card-premium" style="padding:2rem;">
                         <h3 style="font-size:1.15rem;font-weight:700;color:var(--slate-900);margin-bottom:1.25rem;letter-spacing:-0.01em;">
@@ -226,35 +255,6 @@ require_once __DIR__ . '/includes/header.php';
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </div>
-
-                <!-- Right: Smart Travel Checklist -->
-                <div class="col-lg-4">
-                    <div class="card-premium" style="padding:1.5rem;position:sticky;top:90px;">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 style="font-size:1rem;font-weight:700;color:var(--slate-900);margin:0;letter-spacing:-0.01em;">
-                                <i class="bi bi-list-check" style="color:var(--accent-600);"></i> Travel Checklist
-                            </h3>
-                            <span class="badge badge-primary" id="checklistProgress">0/12</span>
-                        </div>
-
-                        <div class="progress mb-3">
-                            <div id="checklistBar" style="height:100%;width:0%;"></div>
-                        </div>
-
-                        <div class="d-flex flex-column gap-2">
-                            <?php foreach ($checklistItems as $idx => $item): ?>
-                            <label class="checklist-item d-flex align-items-center gap-2 p-2" style="border-radius:var(--radius-sm);border:1px solid var(--slate-200);transition:var(--transition);cursor:pointer;">
-                                <input type="checkbox" class="checklist-checkbox" onchange="updateChecklist()" style="width:18px;height:18px;accent-color:var(--primary-600);flex-shrink:0;">
-                                <i class="bi <?php echo e($item['icon']); ?>" style="color:var(--primary-500);font-size:1.1rem;flex-shrink:0;"></i>
-                                <div style="flex-grow:1;min-width:0;">
-                                    <div style="font-weight:600;color:var(--slate-900);font-size:0.85rem;" class="checklist-title"><?php echo e($item['title']); ?></div>
-                                    <div style="color:var(--slate-400);font-size:0.75rem;" class="checklist-desc"><?php echo e($item['desc']); ?></div>
-                                </div>
-                            </label>
-                            <?php endforeach; ?>
-                        </div>
                     </div>
                 </div>
             </div>
