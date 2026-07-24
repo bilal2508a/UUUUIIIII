@@ -66,7 +66,7 @@ require_once __DIR__ . '/includes/header.php';
     <?php if (!empty($images)): ?>
     <div class="card-premium mb-4" style="overflow:hidden;border:none;box-shadow:var(--shadow-lg);">
         <div class="row g-0">
-            <div class="col-lg-8">
+            <div class="col-lg-7">
                 <div style="position:relative;height:480px;background:var(--slate-100);">
                     <img src="<?php echo e(image_url($images[0]['image_path'])); ?>" alt="<?php echo e($property['title']); ?>" id="mainGalleryImg" style="width:100%;height:100%;object-fit:cover;">
                     <?php if (!empty($property['featured'])): ?>
@@ -76,10 +76,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
             </div>
             <?php if (count($images) > 1): ?>
-            <div class="col-lg-4">
-                <div class="d-flex flex-column gap-2 p-2" style="height:480px;overflow-y:auto;">
+            <div class="col-lg-5">
+                <div class="d-flex flex-column gap-2 p-3" style="height:480px;overflow-y:auto;">
                     <?php foreach ($images as $idx => $img): ?>
-                        <div class="gallery-thumb <?php echo $idx === 0 ? 'active' : ''; ?>" onclick="changeMainImage(this, '<?php echo e(image_url($img['image_path'])); ?>')" style="flex-shrink:0;height:115px;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;">
+                        <div class="gallery-thumb <?php echo $idx === 0 ? 'active' : ''; ?>" onclick="changeMainImage(this, '<?php echo e(image_url($img['image_path'])); ?>')" style="flex-shrink:0;height:145px;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;width:100%;">
                             <img src="<?php echo e(image_url($img['image_path'])); ?>" alt="Thumbnail <?php echo $idx + 1; ?>" style="width:100%;height:100%;object-fit:cover;">
                         </div>
                     <?php endforeach; ?>
