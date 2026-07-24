@@ -132,17 +132,33 @@ include __DIR__ . '/includes/header.php';
                 <p style="color:var(--slate-500);margin:0;">No cities available yet.</p>
             </div>
         <?php else: ?>
+            <?php
+            $cityImages = [
+                'Karachi' => 'https://images.pexels.com/photos/2695480/pexels-photo-2695480.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Lahore' => 'https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Islamabad' => 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Rawalpindi' => 'https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Faisalabad' => 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Multan' => 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Peshawar' => 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Quetta' => 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Hyderabad' => 'https://images.pexels.com/photos/1366913/pexels-photo-1366913.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Sialkot' => 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Gujranwala' => 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600',
+                'Bahawalpur' => 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=600',
+            ];
+            $defaultCityImage = 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600';
+            ?>
             <div class="row g-4">
                 <?php foreach ($cities as $city): ?>
                     <div class="col-6 col-md-4 col-lg-3">
-                        <a href="<?php echo url('/properties.php?city=' . urlencode($city)); ?>" class="card-premium" style="text-decoration:none;display:block;padding:1.5rem;height:100%;">
-                            <div style="display:flex;align-items:center;gap:1rem;">
-                                <div style="width:52px;height:52px;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary-600),var(--accent-500));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;box-shadow:0 8px 20px -4px rgba(26,82,245,0.3);">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                </div>
-                                <div>
-                                    <h5 style="margin:0;color:var(--slate-900);font-weight:700;font-size:1.05rem;"><?php echo e($city); ?></h5>
-                                    <small style="color:var(--slate-500);">View properties <i class="bi bi-arrow-right" style="font-size:0.7rem;"></i></small>
+                        <a href="<?php echo url('/properties.php?city=' . urlencode($city)); ?>" class="card-premium" style="text-decoration:none;display:block;padding:0;overflow:hidden;height:100%;position:relative;">
+                            <div style="width:100%;height:160px;overflow:hidden;position:relative;">
+                                <img src="<?php echo e($cityImages[$city] ?? $defaultCityImage); ?>" alt="<?php echo e($city); ?>" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease;" onerror="this.src='<?php echo $defaultCityImage; ?>'">
+                                <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.65));"></div>
+                                <div style="position:absolute;bottom:0;left:0;right:0;padding:1rem;color:#fff;">
+                                    <h5 style="margin:0;font-weight:700;font-size:1.1rem;letter-spacing:-0.01em;text-shadow:0 2px 4px rgba(0,0,0,0.3);"><?php echo e($city); ?></h5>
+                                    <small style="opacity:0.9;font-size:0.8rem;">View properties <i class="bi bi-arrow-right" style="font-size:0.7rem;"></i></small>
                                 </div>
                             </div>
                         </a>

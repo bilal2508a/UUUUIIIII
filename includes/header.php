@@ -44,8 +44,11 @@ $_userFirst = $_userDisplay ? explode(' ', $_userDisplay)[0] : 'User';
 
         <div class="d-none d-lg-flex align-items-center gap-2">
             <?php if ($user): ?>
-                <?php if ($user['role'] === 'owner' || $user['role'] === 'admin'): ?>
+                <?php if ($user['role'] === 'owner'): ?>
                     <a href="<?php echo url('/add-property.php'); ?>" class="btn btn-ghost btn-sm"><i class="bi bi-plus-circle"></i> Add Property</a>
+                <?php endif; ?>
+                <?php if ($user['role'] === 'admin'): ?>
+                    <a href="<?php echo url('/admin.php'); ?>" class="btn btn-ghost btn-sm"><i class="bi bi-shield-check"></i> Admin Panel</a>
                 <?php endif; ?>
                 <a href="<?php echo url('/wishlist.php'); ?>" class="btn btn-ghost btn-sm"><i class="bi bi-heart"></i></a>
                 <div class="position-relative">
@@ -64,9 +67,14 @@ $_userFirst = $_userDisplay ? explode(' ', $_userDisplay)[0] : 'User';
                         <a href="<?php echo url('/profile.php'); ?>" class="dropdown-item-mh">
                             <i class="bi bi-person"></i> Profile
                         </a>
-                        <?php if ($user['role'] === 'owner' || $user['role'] === 'admin'): ?>
+                        <?php if ($user['role'] === 'owner'): ?>
                             <a href="<?php echo url('/owner-dashboard.php'); ?>" class="dropdown-item-mh">
                                 <i class="bi bi-speedometer2"></i> Owner Dashboard
+                            </a>
+                        <?php endif; ?>
+                        <?php if ($user['role'] === 'admin'): ?>
+                            <a href="<?php echo url('/admin.php'); ?>" class="dropdown-item-mh">
+                                <i class="bi bi-shield-check"></i> Admin Dashboard
                             </a>
                         <?php endif; ?>
                         <?php if ($user['role'] === 'tenant'): ?>
@@ -103,8 +111,11 @@ $_userFirst = $_userDisplay ? explode(' ', $_userDisplay)[0] : 'User';
         <a href="<?php echo url('/about.php'); ?>" class="mobile-nav-link">About</a>
         <a href="<?php echo url('/contact.php'); ?>" class="mobile-nav-link">Contact</a>
         <?php if ($user): ?>
-            <?php if ($user['role'] === 'owner' || $user['role'] === 'admin'): ?>
+            <?php if ($user['role'] === 'owner'): ?>
                 <a href="<?php echo url('/add-property.php'); ?>" class="mobile-nav-link">Add Property</a>
+            <?php endif; ?>
+            <?php if ($user['role'] === 'admin'): ?>
+                <a href="<?php echo url('/admin.php'); ?>" class="mobile-nav-link">Admin Dashboard</a>
             <?php endif; ?>
             <a href="<?php echo url('/wishlist.php'); ?>" class="mobile-nav-link">Wishlist</a>
             <a href="<?php echo url('/profile.php'); ?>" class="mobile-nav-link">Profile</a>
